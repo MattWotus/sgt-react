@@ -28,10 +28,11 @@ class App extends React.Component {
       return 0;
     } else {
       for (let i = 0; i < this.state.grades.length; i++) {
-        total = total + this.state.grades[i].grade;
+        const grade = parseInt(this.state.grades[i].grade);
+        total = total + grade;
       }
       const average = total / this.state.grades.length;
-      return average;
+      return Math.ceil(average);
     }
   }
 
@@ -39,6 +40,9 @@ class App extends React.Component {
     const newArray = this.state.grades.slice(0, this.state.grades.length);
     fetch('/api/grades', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(newGrade)
     })
       .then(response => {
@@ -53,7 +57,23 @@ class App extends React.Component {
   render() {
     const calculatedAverage = this.getAverageGrade();
     if (this.state.grades.length === 0) {
-      return <h3>No grades Recorded</h3>;
+      return (
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12">
+              <Header text="Student Grade Table" average={calculatedAverage} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-lg-12 col-xl-9">
+              <h3>No grades Recorded</h3>
+            </div>
+            <div className="col-lg-12 col-xl-3">
+              <GradeForm onSubmit={this.addGrade} />
+            </div>
+          </div>
+        </div>
+      );
     } else {
       return (
         <div className="container-fluid">
@@ -67,7 +87,7 @@ class App extends React.Component {
               <GradeTable students={this.state.grades} />
             </div>
             <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={ this.addGrade }/>
+              <GradeForm onSubmit={this.addGrade} />
             </div>
           </div>
         </div>
