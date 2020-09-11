@@ -17,18 +17,6 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 100
-    },
-    {
-      "name": "Scott Bowler",
-      "course": "Web Development",
-      "grade": "75",
-      "id": 33
-    },
-    {
-      "name": "Tim Davis",
-      "course": "Web Development",
-      "grade": "50",
-      "id": 34
     }
   ]
 }

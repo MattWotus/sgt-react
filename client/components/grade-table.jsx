@@ -4,11 +4,13 @@ function Grade(props) {
   const name = props.name;
   const course = props.course;
   const grade = props.grade;
+  const deleteGrade = <button onClick={() => props.deleteGrade(props.id)} className="btn btn-danger">Delete</button>;
   return (
     <tr>
       <td>{name}</td>
       <td>{course}</td>
       <td>{grade}</td>
+      <td>{deleteGrade}</td>
     </tr>
   );
 }
@@ -21,6 +23,7 @@ function GradeTable(props) {
           <th>Student Name</th>
           <th>Course</th>
           <th>Grade</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
@@ -29,9 +32,11 @@ function GradeTable(props) {
             return (
               <Grade
                 key={grade.id}
+                id={grade.id}
                 name={grade.name}
                 course={grade.course}
-                grade={grade.grade} />
+                grade={grade.grade}
+                deleteGrade={props.onDelete} />
             );
           })
         }
