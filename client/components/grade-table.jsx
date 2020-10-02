@@ -4,7 +4,7 @@ function Grade(props) {
   const name = props.name;
   const course = props.course;
   const grade = props.grade;
-  const deleteGrade = <button onClick={() => props.deleteGrade(props.id)} className="btn btn-danger">Delete</button>;
+  const deleteGrade = <button onClick={() => props.deleteGrade(props.gradeId)} className="btn btn-danger">Delete</button>;
   return (
     <tr>
       <td>{name}</td>
@@ -31,8 +31,8 @@ function GradeTable(props) {
           props.students.map(grade => {
             return (
               <Grade
-                key={grade.id}
-                id={grade.id}
+                key={grade.gradeId}
+                gradeId={grade.gradeId}
                 name={grade.name}
                 course={grade.course}
                 grade={grade.grade}

@@ -64,7 +64,7 @@ class App extends React.Component {
       .then(() => {
         for (let i = 0; i < newArray.length; i++) {
           const grade = { ...newArray[i] };
-          if (grade.id !== id) {
+          if (grade.gradeId !== id) {
             updatedGrades.push(grade);
           }
         }
