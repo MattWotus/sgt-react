@@ -23,17 +23,16 @@ class GradeForm extends React.Component {
       grade: this.state.grade
     };
     this.props.onSubmit(newGrade);
-    this.setState({ name: '', course: '', grade: '' });
+    this.handleReset();
   }
 
   handleReset() {
     this.setState({ name: '', course: '', grade: '' });
+    event.target.reset();
+    this.props.resetSingleGrade();
   }
 
   render() {
-    const name = this.state.name;
-    const course = this.state.course;
-    const grade = this.state.grade;
     const iconStyle = {
       width: '20px',
       height: '16px'
@@ -45,21 +44,21 @@ class GradeForm extends React.Component {
             <span className="input-group-text" id="basic-addon1"><i className="fas fa-user" style={iconStyle}></i></span>
           </div>
           <input type="text" className="form-control" placeholder="Name" name="name" aria-label="name"
-            aria-describedby="basic-addon1" value={name} onChange={this.handleChange} />
+            aria-describedby="basic-addon1" defaultValue={this.props.singleGrade.name} onChange={this.handleChange} />
         </div>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon2"><i className="fas fa-chalkboard" style={iconStyle}></i></span>
           </div>
           <input type="text" className="form-control" placeholder="Course" name="course" aria-label="course"
-            aria-describedby="basic-addon2" value={course} onChange={this.handleChange} />
+            aria-describedby="basic-addon2" defaultValue={this.props.singleGrade.course} onChange={this.handleChange} />
         </div>
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon3"><i className="fas fa-graduation-cap" style={iconStyle}></i></span>
           </div>
           <input type="text" className="form-control" placeholder="Grade" name="grade" aria-label="grade"
-            aria-describedby="basic-addon3" value={grade} onChange={this.handleChange} />
+            aria-describedby="basic-addon3" defaultValue={this.props.singleGrade.grade} onChange={this.handleChange} />
         </div>
         <div>
           <button id="addButton" type="submit" className="btn btn-success pl-3 pr-3 mr-2">Add</button>

@@ -6,11 +6,22 @@ import GradeForm from './grade-form';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { grades: [] };
+    this.state = {
+      grades: [],
+      singleGrade:
+      {
+        name: '',
+        course: '',
+        grade: '',
+        gradeId: ''
+      }
+    };
     this.getAllGrades = this.getAllGrades.bind(this);
     this.getAverageGrade = this.getAverageGrade.bind(this);
     this.addGrade = this.addGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
+    this.getSingleGrade = this.getSingleGrade.bind(this);
+    this.resetSingleGrade = this.resetSingleGrade.bind(this);
   }
 
   componentDidMount() {
@@ -52,7 +63,16 @@ class App extends React.Component {
       .then(data => {
         newArray.push(data);
       })
-      .then(() => this.setState({ grades: newArray }));
+      .then(() => this.setState({
+        grades: newArray,
+        singleGrade:
+        {
+          name: '',
+          course: '',
+          grade: '',
+          gradeId: ''
+        }
+      }));
   }
 
   deleteGrade(id) {
@@ -72,6 +92,33 @@ class App extends React.Component {
       .then(() => this.setState({ grades: updatedGrades }));
   }
 
+  getSingleGrade(id) {
+    for (let i = 0; i < this.state.grades.length; i++) {
+      if (this.state.grades[i].gradeId === id) {
+        this.setState({
+          singleGrade: {
+            name: this.state.grades[i].name,
+            course: this.state.grades[i].course,
+            grade: this.state.grades[i].grade,
+            gradeId: id
+          }
+        });
+      }
+    }
+  }
+
+  resetSingleGrade() {
+    this.setState({
+      singleGrade:
+      {
+        name: '',
+        course: '',
+        grade: '',
+        gradeId: ''
+      }
+    });
+  }
+
   render() {
     const calculatedAverage = this.getAverageGrade();
     if (this.state.grades.length === 0) {
@@ -87,7 +134,7 @@ class App extends React.Component {
               <h3>No grades Recorded</h3>
             </div>
             <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={this.addGrade} />
+              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} />
             </div>
           </div>
         </div>
@@ -102,10 +149,10 @@ class App extends React.Component {
           </div>
           <div className="row">
             <div className="col-lg-12 col-xl-9">
-              <GradeTable students={this.state.grades} onDelete={this.deleteGrade} />
+              <GradeTable students={this.state.grades} onDelete={this.deleteGrade} onUpdate={this.getSingleGrade} />
             </div>
             <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={this.addGrade} />
+              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} />
             </div>
           </div>
         </div>
