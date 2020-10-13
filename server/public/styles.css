@@ -7,8 +7,12 @@
   justify-content: flex-end;
 }
 
+.buttons {
+  display: flex;
+}
+
 .btn-danger {
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -22,7 +26,11 @@
   }
 }
 
-@media only screen and (max-width: 474px) {
+@media only screen and (max-width: 500px) {
+
+  .buttons {
+    flex-direction: column;
+  }
 
   .btn-danger {
     margin-right: 0rem;
