@@ -10,6 +10,16 @@ class GradeForm extends React.Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.singleGrade.name !== prevProps.singleGrade.name) {
+      this.setState({
+        name: this.props.singleGrade.name,
+        course: this.props.singleGrade.course,
+        grade: this.props.singleGrade.grade
+      });
+    }
+  }
+
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
