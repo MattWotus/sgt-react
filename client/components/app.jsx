@@ -22,6 +22,7 @@ class App extends React.Component {
     this.deleteGrade = this.deleteGrade.bind(this);
     this.getSingleGrade = this.getSingleGrade.bind(this);
     this.resetSingleGrade = this.resetSingleGrade.bind(this);
+    this.updateGrade = this.updateGrade.bind(this);
   }
 
   componentDidMount() {
@@ -119,6 +120,33 @@ class App extends React.Component {
     });
   }
 
+  updateGrade(newGrade) {
+    const newArray = this.state.grades.slice(0, this.state.grades.length);
+    fetch(`/api/grades/${this.state.singleGrade.gradeId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newGrade)
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        newArray.push(data);
+      })
+      .then(() => this.setState({
+        grades: newArray,
+        singleGrade:
+        {
+          name: '',
+          course: '',
+          grade: '',
+          gradeId: ''
+        }
+      }));
+  }
+
   render() {
     const calculatedAverage = this.getAverageGrade();
     if (this.state.grades.length === 0) {
@@ -144,7 +172,7 @@ class App extends React.Component {
               <GradeTable students={this.state.grades} onDelete={this.deleteGrade} onUpdate={this.getSingleGrade} />
             </div>
             <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} />
+              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} updateGrade={this.updateGrade} />
             </div>
           </div>
         </div>

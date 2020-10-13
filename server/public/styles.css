@@ -7,8 +7,8 @@
   justify-content: flex-end;
 }
 
-.btn-danger, .btn-info {
-  padding:
+.btn-danger {
+  margin-right: 0.25rem;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -25,6 +25,7 @@
 @media only screen and (max-width: 474px) {
 
   .btn-danger {
+    margin-right: 0rem;
     margin-bottom: 0.5rem;
   }
 }
