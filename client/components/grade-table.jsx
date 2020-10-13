@@ -5,7 +5,7 @@ function Grade(props) {
   const course = props.course;
   const grade = props.grade;
   const deleteGrade = <button onClick={() => props.deleteGrade(props.gradeId)} className="btn btn-danger">Delete</button>;
-  const updateGrade = <button className="btn btn-info">Update</button>;
+  const updateGrade = <button onClick={() => props.updateGrade(props.gradeId)} className="btn btn-info">Update</button>;
   return (
     <tr>
       <td>{name}</td>
@@ -37,7 +37,8 @@ function GradeTable(props) {
                 name={grade.name}
                 course={grade.course}
                 grade={grade.grade}
-                deleteGrade={props.onDelete} />
+                deleteGrade={props.onDelete}
+                updateGrade={props.onUpdate} />
             );
           })
         }
