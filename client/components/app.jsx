@@ -121,6 +121,7 @@ class App extends React.Component {
   }
 
   updateGrade(newGrade) {
+    const updatedGrades = [];
     const newArray = this.state.grades.slice(0, this.state.grades.length);
     fetch(`/api/grades/${this.state.singleGrade.gradeId}`, {
       method: 'PUT',
@@ -133,10 +134,16 @@ class App extends React.Component {
         return response.json();
       })
       .then(data => {
-        newArray.push(data);
+        for (let i = 0; i < newArray.length; i++) {
+          let grade = { ...newArray[i] };
+          if (data.gradeId === newArray[i].gradeId) {
+            grade = data;
+          }
+          updatedGrades.push(grade);
+        }
       })
       .then(() => this.setState({
-        grades: newArray,
+        grades: updatedGrades,
         singleGrade:
         {
           name: '',
