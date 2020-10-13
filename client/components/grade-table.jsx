@@ -11,7 +11,7 @@ function Grade(props) {
       <td>{name}</td>
       <td>{course}</td>
       <td>{grade}</td>
-      <td>{deleteGrade} {updateGrade}</td>
+      <td><div className='buttons'>{deleteGrade} {updateGrade}</div></td>
     </tr>
   );
 }
