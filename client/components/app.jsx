@@ -124,11 +124,7 @@ class App extends React.Component {
     if (this.state.grades.length === 0) {
       return (
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-12">
-              <Header text="Student Grade Table" average={calculatedAverage} />
-            </div>
-          </div>
+          <Header text="Student Grade Table" average={calculatedAverage} />
           <div className="row">
             <div className="col-lg-12 col-xl-9">
               <h3>No grades Recorded</h3>
@@ -142,11 +138,7 @@ class App extends React.Component {
     } else {
       return (
         <div className="container-fluid">
-          <div className="row">
-            <div className="col-12">
-              <Header text="Student Grade Table" average={calculatedAverage} />
-            </div>
-          </div>
+          <Header text="Student Grade Table" average={calculatedAverage} />
           <div className="row">
             <div className="col-lg-12 col-xl-9">
               <GradeTable students={this.state.grades} onDelete={this.deleteGrade} onUpdate={this.getSingleGrade} />

@@ -1,0 +1,30 @@
+.title {
+  margin-bottom: 1rem;
+}
+
+.average {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-danger, .btn-info {
+  padding:
+}
+
+@media only screen and (max-width: 1200px) {
+
+  .title {
+    margin-bottom: 0;
+  }
+
+  .average {
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 474px) {
+
+  .btn-danger {
+    margin-bottom: 0.5rem;
+  }
+}

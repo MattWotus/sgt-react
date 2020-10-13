@@ -21,7 +21,7 @@ function GradeTable(props) {
     <table className="table table-striped table-bordered">
       <thead className="thead-dark">
         <tr>
-          <th>Student Name</th>
+          <th>Student</th>
           <th>Course</th>
           <th>Grade</th>
           <th>Operations</th>
