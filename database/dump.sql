@@ -100,7 +100,6 @@ ALTER TABLE ONLY public.grades ALTER COLUMN "gradeId" SET DEFAULT nextval('publi
 
 COPY public.grades ("gradeId", name, course, grade, "createdAt") FROM stdin;
 13	Matt Wotus	React	95	2020-10-13 22:52:19.927312+00
-14	Matt Wotus	Node	92	2020-10-13 22:52:32.332329+00
 \.
 
 
