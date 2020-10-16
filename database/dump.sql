@@ -99,7 +99,7 @@ ALTER TABLE ONLY public.grades ALTER COLUMN "gradeId" SET DEFAULT nextval('publi
 --
 
 COPY public.grades ("gradeId", name, course, grade, "createdAt") FROM stdin;
-13	Matt Wotus	React	95	2020-10-13 22:52:19.927312+00
+15	Matt Wotus	React	95	2020-10-16 23:22:59.74336+00
 \.
 
 
@@ -107,7 +107,7 @@ COPY public.grades ("gradeId", name, course, grade, "createdAt") FROM stdin;
 -- Name: grades_gradeId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."grades_gradeId_seq"', 14, true);
+SELECT pg_catalog.setval('public."grades_gradeId_seq"', 15, true);
 
 
 --
