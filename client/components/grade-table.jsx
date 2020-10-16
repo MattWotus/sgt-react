@@ -17,34 +17,52 @@ function Grade(props) {
 }
 
 function GradeTable(props) {
-  return (
-    <table className="table table-striped table-bordered">
-      <thead className="thead-dark">
-        <tr>
-          <th>Student</th>
-          <th>Course</th>
-          <th>Grade</th>
-          <th>Operations</th>
-        </tr>
-      </thead>
-      <tbody>
-        {
-          props.students.map(grade => {
-            return (
-              <Grade
-                key={grade.gradeId}
-                gradeId={grade.gradeId}
-                name={grade.name}
-                course={grade.course}
-                grade={grade.grade}
-                deleteGrade={props.onDelete}
-                updateGrade={props.onUpdate} />
-            );
-          })
-        }
-      </tbody>
-    </table>
-  );
+  if (props.students.length === 0) {
+    return (
+      <div>
+        <table className="table table-striped table-bordered">
+          <thead className="thead-dark">
+            <tr>
+              <th>Student</th>
+              <th>Course</th>
+              <th>Grade</th>
+              <th>Operations</th>
+            </tr>
+          </thead>
+        </table>
+        <p>No Grades Recorded</p>
+      </div>
+    );
+  } else {
+    return (
+      <table className="table table-striped table-bordered">
+        <thead className="thead-dark">
+          <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Grade</th>
+            <th>Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            props.students.map(grade => {
+              return (
+                <Grade
+                  key={grade.gradeId}
+                  gradeId={grade.gradeId}
+                  name={grade.name}
+                  course={grade.course}
+                  grade={grade.grade}
+                  deleteGrade={props.onDelete}
+                  updateGrade={props.onUpdate} />
+              );
+            })
+          }
+        </tbody>
+      </table>
+    );
+  }
 }
 
 export default GradeTable;
