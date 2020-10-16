@@ -38,7 +38,7 @@ class App extends React.Component {
   getAverageGrade() {
     let total = 0;
     if (this.state.grades.length === 0) {
-      return 0;
+      return 'N/A';
     } else {
       for (let i = 0; i < this.state.grades.length; i++) {
         const grade = parseInt(this.state.grades[i].grade);
@@ -156,35 +156,19 @@ class App extends React.Component {
 
   render() {
     const calculatedAverage = this.getAverageGrade();
-    if (this.state.grades.length === 0) {
-      return (
-        <div className="container-fluid">
-          <Header text="Student Grade Table" average={calculatedAverage} />
-          <div className="row">
-            <div className="col-lg-12 col-xl-9">
-              <h3>No grades Recorded</h3>
-            </div>
-            <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} />
-            </div>
+    return (
+      <div className="container-fluid">
+        <Header text="Student Grade Table" average={calculatedAverage} />
+        <div className="row">
+          <div className="col-lg-12 col-xl-9">
+            <GradeTable students={this.state.grades} onDelete={this.deleteGrade} onUpdate={this.getSingleGrade} />
+          </div>
+          <div className="col-lg-12 col-xl-3">
+            <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} updateGrade={this.updateGrade} />
           </div>
         </div>
-      );
-    } else {
-      return (
-        <div className="container-fluid">
-          <Header text="Student Grade Table" average={calculatedAverage} />
-          <div className="row">
-            <div className="col-lg-12 col-xl-9">
-              <GradeTable students={this.state.grades} onDelete={this.deleteGrade} onUpdate={this.getSingleGrade} />
-            </div>
-            <div className="col-lg-12 col-xl-3">
-              <GradeForm onSubmit={this.addGrade} singleGrade={this.state.singleGrade} resetSingleGrade={this.resetSingleGrade} updateGrade={this.updateGrade} />
-            </div>
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 }
 
