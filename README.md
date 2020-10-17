@@ -30,15 +30,3 @@ Try the application live at http://grade-table-full-stack.mattwotusdev.com/
 ## Preview
 
 ![healthy-habitation](assets/student-grade-table-full-stack.gif)
-
-## Development
-
-### Getting Started
-
-1. Clone the repository.
-
-   ```
-   git clone https://github.com/MattWotus/student-grade-table-full-stack.git
-   ```
-   
-2. Open the folder in a code editor and open the index.html in default browser.
