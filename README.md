@@ -3,7 +3,7 @@ A full-stack React and Node.js application for teachers who want to manage cours
 
 ## Technologies Used
 
-- React.js
+- React
 - Node.js
 - Express.js
 - PostgreSQL
