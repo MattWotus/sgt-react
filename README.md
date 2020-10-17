@@ -21,11 +21,11 @@ Try the application live at http://grade-table-full-stack.mattwotusdev.com/
 
 ## Features
 
-- Teachers can view a list of recorded grades.
-- Teachers can view the average grade.
-- Teachers can add a grade to the table.
-- Teachers can update a grade.
-- Teachers can delete a grade from the table.
+- User can view a list of recorded grades.
+- User can view the average grade.
+- User can add a grade.
+- User can update a grade.
+- User can delete a grade.
 
 ## Preview
 
